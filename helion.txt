@@ -1,0 +1,95 @@
+﻿** wprowadznie.
+
+Czesc, dziękuję, ze wybrales mój kurs. 
+
+Na tym szkoleniu dowiesz się jak wykorzystać format Java Script Object Notation  w  Interfejsach Programowania Aplikacji, czyli API. 
+
+Stworzymy prosty, ale funkcjonalny webserwis oparty na protokole REST (Representational State Transfer). 
+
+Naszą aplikacje po stronie back-end wykorzysta jezyk Java w wersji 8 oraz boblioteki Jackson oraz JAXB. webserwis natomiast bedzie komunikowal sie z lokalna baza danych. 
+
+Zbudujemy również klienta naszego REST API, czyli prostą stronę internetową, która pozwoli nam na prezentację wizualną danych pobranych z serwera oraz zarzadzanie nimi. 
+
+
+** 01 01 Instalacja i konfiguracja srodowiska.
+
+W tej lekcji zainstalujemy oraz skonfigurujemy nasze srodowisko. 
+
+Jest to szkolenie dla osob posiadajacych podstawowe umiejetnosci programowania w jezyku Java, dlatego przejdziemy przez etap instalacji dosc szybko, tak aby nie stracic czasu na najprostrze czynnosci. 
+
+W pierwszej kolejnosci zainstalujemy JDK. 
+W tym celu udaje sie na strone firmy Oracle i pobieram odpowiednia wersje dla mojego systemu. Instalacja JDK nie powinna spawic problemu, dlatego ja pominę etap samej instalacji. 
+]
+W drugim kroku zainstaluje eclipse dla Javy EE w wersji Oxygen 2.
+
+Ostatnia czynnosc to pobranie kontenera plikacji. Ja wybralem Apache Tomcat 8.0.
+
+** 01 02 Co to jest JSON.
+
+Co to jest JSON? 
+Format JSON, to akronim od JavaScript Object Notation. 
+Mowiac najprosciej JSON  to sposób na wymiane danych za pomocą zwykłego tekstu. Jest to zwykły łańcuch znaków. Za pomocą okreslonych skladni i zasad mozemy wymieniac informacje pomiedzy np. dwoma aplikacjami napisanymi w dwóch odmiennych jezykach programowania lub jako klient webserwisu prezentowac dane na naszej wlasne strone internetowej,co wspolnie na tym kursie zrobimy.
+
+JSON jest niezalezny od jezykow programowania. Wykorzystuje natomiast skłądnie jezykowe znane programistom z takich jezykow jak np. JavaScript, C, Perl, C++.
+
+ JSON po polsku nie brzmi zbyt atrakcyjnie, jest to cos w stylu JavaSriptowy zapis obiektów.
+
+Zasady są dosc proste. Informacje zapisujemy za pomoca par Klucz - Wartosc.  Klucz musi byc otoczony podwojnym cudzyslowiem. Po dwukropku zaczyna sie Warosc i jesli jest to łancuch znakow po prostu String, to musi byc otoczony podwojnym cudzyslowiem, a jesli jest to liczba, to bez cudzyslowow. Kazda kolejna para klucz-wartosc odzielona jest przecinkiem.
+
+W plikach JSON wykorzystuje sie rowniez klamry, ktore oznaczaja obiekt. We wnetrzu obiektu znaduje sie tak zwany nieuporzadkowany zbior luczy i warosci. Jest to zawartosc, z ktorej obiekt chcemy stworzyc obiekt. 
+
+Mozemy oznaczac rowniez tablice przechowujace uporzadkowany zbior warosci, albo tablice obiektow.
+
+* Na ekranie kilka przykladow.
+
+Bez problemu oznaczymy rowniez wartosci boolowskie true oraz false. Takich wartosci podobnie jak liczby nie umieszczamy w cudzyslowach.
+
+Mozemy dowolnie zagniezdzac te struktury. 
+
+* Na ekranie widzisz prosty plik JSON. 
+
+* Przyjrzyjmy sie teraz kolejnemu plikowi JSON. 
+
+
+01 02 - Co to jest REST.
+
+W tym odcinku czas na krotkie omowienie REST.
+
+REST z angielskiego  Representational State Transfer jest wzorcem tworzenia architektury aplikacji rozproszonych. Narzuca dobre praktymi tworzenia tak zwanych RESTful web API. 
+
+Zaczynajac od poczatku,  protokol HTTP posiada kilka metod - czasownikow, dzieki ktorym mozemy pytac o dane, aktualizowac je, dodawac dane oraz usuwac. 
+
+Dwa podstawowe czasowniki to GET i POST.
+
+Kolejne dwa, mniej popularne to PUT i DELETE. 
+
+Oczywiscie jest jeszcze kilka metod, ale na tym etapie kursu ta wiedza zupelnie nam sie nie przyda.
+
+Do pobierania danych powinnismy uzywac metody GET. 
+Do dodawania damych metody POST.
+Edytować dane za pomocą metody PUT.
+oraz usuwac za pomoca metody DELETE. 
+
+Metody, o ktorych wlasnie wspomnialem dziela sie na idempotentne i nie. Ale postaram sie to zagadnienie poruszyc przy okazji konstruowania metod do naszej uslugi webserwisowej, aby w tym monencie nie komplikowac niepotrzebne podstawowych informacji.  
+
+Główna wlasnosc wzorca REST to zasoby. Kazdy zasob ma swoj adres URL, jest unikalny i zawsze taki sam.
+W raz ze wzorcem REST bedziemy starali sie stworzyc intuicyjne hiperlacza, do naszych zasobow, co jak sie okaze w cale nie jest tak oczywiste. 
+REST to po prostu łatwa technika tworzenia serwisów. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
