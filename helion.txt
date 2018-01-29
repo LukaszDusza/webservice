@@ -74,7 +74,7 @@ Metody, o ktorych wlasnie wspomnialem dziela sie na idempotentne i nie. Ale post
 
 Główna wlasnosc wzorca REST to zasoby. Kazdy zasob ma swoj adres URL, jest unikalny i zawsze taki sam.
 W raz ze wzorcem REST bedziemy starali sie stworzyc intuicyjne hiperlacza, do naszych zasobow, co jak sie okaze w cale nie jest tak oczywiste. 
-REST to po prostu łatwa technika tworzenia serwisów. 
+REST to po prostu sztuka tworzenia przyjaznych serwisów. 
 
 
 
