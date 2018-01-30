@@ -4,9 +4,10 @@ Czesc, dziękuję, ze wybrales mój kurs.
 
 Na tym szkoleniu dowiesz się jak wykorzystać format Java Script Object Notation  w  Interfejsach Programowania Aplikacji, czyli API. 
 
-Stworzymy prosty, ale funkcjonalny webserwis oparty na protokole REST (Representational State Transfer). 
+Stworzymy prosty, ale funkcjonalny webserwis oparty na wzorcu REST (Representational State Transfer). 
 
-Naszą aplikacje po stronie back-end wykorzysta jezyk Java w wersji 8 oraz boblioteki Jackson oraz JAXB. webserwis natomiast bedzie komunikowal sie z lokalna baza danych. 
+Nasza aplikacja po stronie back-end wykorzysta jezyk Java w wersji 8 oraz boblioteki Jackson oraz JAXB. 
+Webserwis bedzie komunikowal sie z lokalna baza danych. 
 
 Zbudujemy również klienta naszego REST API, czyli prostą stronę internetową, która pozwoli nam na prezentację wizualną danych pobranych z serwera oraz zarzadzanie nimi. 
 
@@ -30,21 +31,20 @@ Co to jest JSON?
 Format JSON, to akronim od JavaScript Object Notation. 
 Mowiac najprosciej JSON  to sposób na wymiane danych za pomocą zwykłego tekstu. Jest to zwykły łańcuch znaków. Za pomocą okreslonych skladni i zasad mozemy wymieniac informacje pomiedzy np. dwoma aplikacjami napisanymi w dwóch odmiennych jezykach programowania lub jako klient webserwisu prezentowac dane na naszej wlasne strone internetowej,co wspolnie na tym kursie zrobimy.
 
-JSON jest niezalezny od jezykow programowania. Wykorzystuje natomiast skłądnie jezykowe znane programistom z takich jezykow jak np. JavaScript, C, Perl, C++.
+JSON jest niezalezny od jezykow programowania. Wykorzystuje natomiast składnie jezykowe znane programistom z takich jezykow jak np. JavaScript, C, Perl, C++.
 
  JSON po polsku nie brzmi zbyt atrakcyjnie, jest to cos w stylu JavaSriptowy zapis obiektów.
 
 Zasady są dosc proste. Informacje zapisujemy za pomoca par Klucz - Wartosc.  Klucz musi byc otoczony podwojnym cudzyslowiem. Po dwukropku zaczyna sie Warosc i jesli jest to łancuch znakow po prostu String, to musi byc otoczony podwojnym cudzyslowiem, a jesli jest to liczba, to bez cudzyslowow. Kazda kolejna para klucz-wartosc odzielona jest przecinkiem.
 
-W plikach JSON wykorzystuje sie rowniez klamry, ktore oznaczaja obiekt. We wnetrzu obiektu znaduje sie tak zwany nieuporzadkowany zbior luczy i warosci. Jest to zawartosc, z ktorej obiekt chcemy stworzyc obiekt. 
+W plikach JSON wykorzystuje sie rowniez klamry, ktore oznaczaja obiekt. We wnetrzu obiektu znaduje sie tak zwany nieuporzadkowany zbior kluczy i warosci. Jest to zawartosc, z ktorej chcemy stworzyc obiekt. 
 
 Mozemy oznaczac rowniez tablice przechowujace uporzadkowany zbior warosci, albo tablice obiektow.
 
 * Na ekranie kilka przykladow.
 
 Bez problemu oznaczymy rowniez wartosci boolowskie true oraz false. Takich wartosci podobnie jak liczby nie umieszczamy w cudzyslowach.
-
-Mozemy dowolnie zagniezdzac te struktury. 
+ 
 
 * Na ekranie widzisz prosty plik JSON. 
 
@@ -55,7 +55,7 @@ Mozemy dowolnie zagniezdzac te struktury.
 
 W tym odcinku czas na krotkie omowienie REST.
 
-REST z angielskiego  Representational State Transfer jest wzorcem tworzenia architektury aplikacji rozproszonych. Narzuca dobre praktymi tworzenia tak zwanych RESTful web API. 
+REST z angielskiego  Representational State Transfer jest wzorcem tworzenia architektury aplikacji rozproszonych. Narzuca dobre praktyki tworzenia tak zwanych RESTful web API. 
 
 Zaczynajac od poczatku,  protokol HTTP posiada kilka metod - czasownikow, dzieki ktorym mozemy pytac o dane, aktualizowac je, dodawac dane oraz usuwac. 
 
@@ -66,16 +66,38 @@ Kolejne dwa, mniej popularne to PUT i DELETE.
 Oczywiscie jest jeszcze kilka metod, ale na tym etapie kursu ta wiedza zupelnie nam sie nie przyda.
 
 Do pobierania danych powinnismy uzywac metody GET. 
-Do dodawania damych metody POST.
+Do dodawania danych - metody POST.
 Edytować dane za pomocą metody PUT.
 oraz usuwac za pomoca metody DELETE. 
 
 Metody, o ktorych wlasnie wspomnialem dziela sie na idempotentne i nie. Ale postaram sie to zagadnienie poruszyc przy okazji konstruowania metod do naszej uslugi webserwisowej, aby w tym monencie nie komplikowac niepotrzebne podstawowych informacji.  
 
-Główna wlasnosc wzorca REST to zasoby. Kazdy zasob ma swoj adres URL, jest unikalny i zawsze taki sam.
-W raz ze wzorcem REST bedziemy starali sie stworzyc intuicyjne hiperlacza, do naszych zasobow, co jak sie okaze w cale nie jest tak oczywiste. 
-REST to po prostu sztuka tworzenia przyjaznych serwisów. 
+Główna wlasnosc wzorca REST to zasoby. Kazdy zasob ma swoj adres URL.
+URL jest unikalny i zawsze taki sam.
+W naszym projekcie bedziemy starali sie stworzyc intuicyjne hiperlacza do naszych zasobow, co jak sie okaze w cale nie jest tak oczywiste. 
 
+
+01 03 Tworzenie projekt Maven.
+
+Do stworzenia projektu użyję narzędzia Maven.
+
+Jeśli nie spotkałeś się z tym narzędziemy, to mówiąc w skrócie, Maven to narzędzie do zarządzania projektem, jego zaleznościami (czyli np. bibliotekami które będziemy używać) i strukturą projektu np. z podziałem na moduły.  Oczywiście istnieją alternatywne rozwiązania, takie jak np. starszy Ant czy nowszy Gradle. Niemniej Maven dość szybko został zaadoptowany przez firmy i nic nie wskazuje na to, żeby miało się to wkrótce zmienić, dlatego Mavena należy poznać. 
+
+* tworzenie projektu i omowienie struktury.
+ 
+artefakt — samoistna jednostka w projekcie, artefaktem jest np. każdy z modułów czy każda z zależności projektu. Można powiedzieć, że artefakt to takie zbiorcze określenie które obejmuje zarówno projekty, moduły, biblioteki, pluginy (czyli elementy całego procesu), archetypy (coś w rodzaju \‘szablonu\’ projektu, który możesz szybko skonfigurować i uruchomić) itd.
+pom.xml — główny plik z ustawieniami Maven w projekcie
+repozytorium — zbiór artefaktów. Każda instalacja Maven powoduje utworzenie lokalnego repozytorium, jest także repozytorium centralne oraz można korzystać z dowolnych innych repozytoriów (np. jakiegoś projektu)
+
+Korzystając z Mavena projekt ma standardową strukturę (na dysku), w której możemy wyróżnić kilka elementów (w głównym katalogu projektu):
+
+pom.xml — główny plik konfiguracji Maven, omówimy go bardziej szczegółowo poniżej
+/src/main — katalog, gdzie znajdziemy pliki naszego programu, są tam dwa podkatalogi:
+java — tutaj trafiają wszystkie klasy (cały kod naszego modułu)
+resources — tutaj będą wszystkie pliki, które nie są kodem, np. grafiki, pliki XML, konfiguracje itp (nauczymy się z nich korzystać w kolejnych etapach kursu)
+w przypadku projektów webowych będziemy mieli także katalog webapp, który jest używany do umieszczania wszystkich treści webowych
+/src/test — ma podobną strukturę jak katalog /main z tą różnicą, że jest on wykorzystywany tylko w trakcie automatycznych testów. O automatycznych testach powiemy sobie więcej w 8 lekcji
+/target — tutaj trafia skompilowany projekt (czyli np. w postaci wykonywalnego pliku JAR lub aplikacji webowej WAR). 
 
 
 
