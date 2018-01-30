@@ -99,6 +99,8 @@ w przypadku projektów webowych będziemy mieli także katalog webapp, który je
 /src/test — ma podobną strukturę jak katalog /main z tą różnicą, że jest on wykorzystywany tylko w trakcie automatycznych testów. O automatycznych testach powiemy sobie więcej w 8 lekcji
 /target — tutaj trafia skompilowany projekt (czyli np. w postaci wykonywalnego pliku JAR lub aplikacji webowej WAR). 
 
+kol
+
 
 
 
